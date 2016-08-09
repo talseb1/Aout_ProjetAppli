@@ -8,12 +8,12 @@ if (isset($_POST['submit_login'])) {
         header('Location: http://localhost/Aout_ProjetAppli/admin/index.php');
     } else {
         $message = $retour;
-        $message = "Identifiants incorrectes !";
+        $message = "Identifiants incorrectes ss!";
     }
 }
 ?>
 <div class="jumbotron">
-<section id="message"><?php if (isset($message)) print $message; ?></section>
+    
 <fieldset id="fieldset_login">
     <legend class="txtAuth">Authentifiez-vous sur la session administrateur :</legend>
     <form class="form-signin" action="<?php print $_SERVER['PHP_SELF']; ?>" method='post' id="form_auth">
@@ -41,9 +41,8 @@ if (isset($_POST['submit_login'])) {
                 </td>	
             </tr>
         </table>	
-    </form>
+    </form><p id="message" class="text-uppercase text-danger"><?php if (isset($message)) print $message; ?></p>
 </fieldset>
-
 </div>
 
 
