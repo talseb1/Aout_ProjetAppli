@@ -36,14 +36,14 @@ foreach (glob('./lib/css/bootstrap/js/*.js') as $js) {
             <?php
         }
         ?>
-<!-- jQuery library-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="./lib/js/fonctionsJqueryAdmin.js"></script> 
     </head>
     <body>
-        <section>              
+        <section id="tophead">              
             <header id="header">
                 <nav class="nav navbar-nav navbar-right bg-danger"> 
 
@@ -54,56 +54,56 @@ foreach (glob('./lib/css/bootstrap/js/*.js') as $js) {
                     }
                     ?>
                 </nav>
-          
+
             </header>
         </section>
-            <p><br><br><br><br><br></p>
-            <div class="container">
-                <?php if (!isset($_SESSION['admin'])) {
-                    ?>
-                    <section id="login_form">
-                        <?php
-                        require './pages/authentification.php';
-                        ?> </section><?php
-                } else {
-                    ?>
-                    <section>
-                        <ul>
-
-                            <?php
-                            if (file_exists('./lib/php/menu.php')) {
-                                include ('./lib/php/menu.php');
-                            }
-                            ?>
-                    </ul>
-                    </section>
-
-                    <section>
-                        <div class="jumbotron">
-                            <?php
-                            if (!isset($_SESSION['page'])) {
-                                $_SESSION['page'] = "accueil";
-                            }
-                            if (isset($_GET['page'])) {
-                                $_SESSION['page'] = $_GET['page'];
-                            }
-                            $chemin = './pages/' . $_SESSION['page'] . '.php';
-                            if (file_exists($chemin)) {
-
-                                include ($chemin);
-                            }
-                            ?>                      
-                        </div>
-
-                    </section>
-                    <?php
-                }
+        <p><br><br><br><br><br></p>
+        <div class="container">
+            <?php if (!isset($_SESSION['admin'])) {
                 ?>
-            </div>
-            <div class="modal-footer navbar navbar-default navbar-fixed-bottom">
+                <section id="login_form">
+                    <?php
+                    require './pages/authentification.php';
+                    ?> </section><?php
+            } else {
+                ?>
+                <section>
+                    <ul>
+
+                        <?php
+                        if (file_exists('./lib/php/menu.php')) {
+                            include ('./lib/php/menu.php');
+                        }
+                        ?>
+                    </ul>
+                </section>
+
+                <section>
+                    <div class="jumbotron">
+                        <?php
+                        if (!isset($_SESSION['page'])) {
+                            $_SESSION['page'] = "accueil";
+                        }
+                        if (isset($_GET['page'])) {
+                            $_SESSION['page'] = $_GET['page'];
+                        }
+                        $chemin = './pages/' . $_SESSION['page'] . '.php';
+                        if (file_exists($chemin)) {
+
+                            include ($chemin);
+                        }
+                        ?>                      
+                    </div>
+
+                </section>
+                <?php
+            }
+            ?>
+        </div>
+        <div class="modal-footer navbar navbar-default navbar-fixed-bottom">
             <?php
             require './lib/php/footer.php';
             ?>
-             </div>   
+        </div>   
     </body>
 </html>

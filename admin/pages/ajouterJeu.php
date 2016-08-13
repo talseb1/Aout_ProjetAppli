@@ -1,12 +1,12 @@
 <?php
 require './lib/php/verifier_connexion.php';
 ?>
-
+<h2 class="text-muted text-center">Ajouter un jeu <i class="text-danger glyphicon glyphicon-console"></i></h2>
 <section id="resultat" class="text-success"><?php if (isset($texte)) print $texte; ?></section>
 <section id="leform">
     <form id="form_ajout_jeu" action="<?php print $_SERVER['PHP_SELF']; ?>" method="get">
         <fieldset id="Client">
-            <legend>Formulaire : Ajouter un jeu </legend>
+            <legend>Nouveau jeu : </legend>
             <table class="text-info text">
 
                 <tr>
@@ -127,9 +127,9 @@ if (isset($_GET['submit_jeu'])) {
         $mg2 = new AjoutJeuManager($db);
         $retour = $mg2->addjeu($_GET);
         if ($retour == 1) {
-            $texte = "<span class='text-success'>Votre jeu a bien été enregistré.<br /></span>";
+            echo "<span class='text-success'>Votre jeu a bien été enregistré.<br /></span>";
         } else if ($retour == 2) {
-            $texte = "<span class='text-danger'>Jeu déja existant</span>";
+            echo"<span class='text-danger'>Jeu déja existant</span>";
         }
         if (isset($_SESSION['form'])) {
             unset($_SESSION['form']);

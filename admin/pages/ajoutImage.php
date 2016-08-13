@@ -4,6 +4,8 @@ $uploadLocation = "./images/games/";
 //$uploadLocation = "\tmp";
 
 ?>  
+<h2 class="text-muted text-center">Ajouter une image <i class="text-danger glyphicon glyphicon-picture"></i></h2>
+
 <div  id="global">
     <div id="gauche"class="left">
       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="fileForm" id="fileForm" enctype="multipart/form-data">
@@ -46,8 +48,8 @@ if(move_uploaded_file($_FILES['upfile']['tmp_name'], $target_path)) {
     <?php if($flag==1){
       ?>  <div id="droite"class="img-thumbnail"><?php
  
-     echo "Aperçu : ";
-     ?><br><img  align="top"class="img-thumbnail" src="<?php print $basename;?>" alt="vignette" /></div><?php 
+     echo "<p>Aperçu : ";
+     ?><br><img  id="check-img" align="top"class="img-thumbnail" src="<?php print $basename;?>" alt="vignette" /></p></div><?php 
     }
     ?>
 <?php            

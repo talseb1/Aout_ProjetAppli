@@ -1,7 +1,7 @@
 <?php
 require './lib/php/verifier_connexion.php'; 
 ?>
-
+<h2 class="text-muted text-center">Ajouter un développeur <i class="text-danger glyphicon glyphicon-user"></i></h2>
 
 <section id="resultat" class="text-success"><?php if(isset($texte)) print $texte; ?></section>
 <!--creer une table contact afin de mettre ces données dans la DB ?-->
@@ -69,10 +69,10 @@ if(isset($_GET['submit_dev'])) {
         $mg2 = new AjoutDevManager($db);
         $retour = $mg2->addDev($_GET);
         if($retour==1){
-            $texte="<span class='text-success'>Developpeur bien ajouté !<br /></span>";
+            echo "<span class='text-success'>Developpeur bien ajouté !<br /></span>";
         }
         else if ($retour==2) {
-            $texte="<span class='text-danger'>Déja existant</span>";
+            echo "<span class='text-danger'>Déja existant</span>";
         }    
         if(isset($_SESSION['form'])) {unset($_SESSION['form']);}                
     }
