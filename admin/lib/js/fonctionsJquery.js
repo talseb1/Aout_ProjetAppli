@@ -267,6 +267,81 @@ $(document).ready(function() {
       }
       
     });    
-     
+    
+      //ENVOYER FORMULAIRE DE COMMANDE PAR AJAX
+   $('input#submitcatalogue').on ('click',function(event) {
+      
+      event.preventDefault();// ou return false à la fin
+      //alert("arrivé");
+      var Id_client = $('input#id_client').val();
+      
+      if($.trim(Id_client)!='') {
+          var data_form=$('form#formachat').serialize();
+          //alert(data_form);
+          $.ajax({               
+            type : 'GET',            
+            data : data_form,
+            dataType : "json",//type du retour des données par le php
+            url : '../admin/lib/php/ajax/AjaxCat_submit.php',
+            //callback exécuté en cas de succès uniquement :
+            success : function(data){ //data : ce qui est retourné par le fichier php 
+                //effacer les valeurs
+                $('form').find('input[type=text]').val('');
+                $('form').find('input[type=email]').val('');
+                //$('form').find('input[type=date]').val('');
+                $('input[name="type"]').prop('checked', false);
+
+                if(data.retour == 1) {  //stricte égalité type compris (sinon valeurs peuvent être de types != et rester =
+                   
+                    $('section#resultat').html("Votre demande a bien été envoyée ! ");
+                }
+                else if(data.retour == 2){    
+                    
+                    $('section#resultat').html("Pas trouvé l'Id du client...");
+                }
+                else {  
+                    
+                    $('section#resultat').html("Echec.");
+                }
+               // $('form#form_reservation').reset(); // ne fonctionne pas
+            },
+          //callback en cas d'échec
+            fail : function() {
+                document.write("Planté");
+              alert("échec url");           
+          }
+        })//fin $.ajax    
+      } //fin if
+      //si champs manquants
+      else {
+         
+          $('section#resultat').html("Remplissez tous les champs !"); 
+          
+      }
+      
+    });    
+      //cacher ou afficher une div  
+  $('#cacher').click(function(){
+    $('#avertisst').toggle();
+    if($('#avertisst').is(':visible')){
+        $(this).val('Cacher le conseil');
+    }
+    else {
+        $(this).val('Afficher le conseil');
+    }
+  });
+
+  //ne pas afficher div quand javascript est déjà actif.
+  $('#no-js').remove();
+    //vérifier les champs d'un formulaire
+  $('#form_reservation').on('submit', function(event) { // on idem que bind
+    $('[type=text]').each(function() {
+       
+      if(!$(this).val().length) {	
+	    event.preventDefault();
+       
+      }
+    });
+  });
   
 });
