@@ -207,5 +207,66 @@ $(document).ready(function() {
       
     });    
        
+    
+    //ENVOYER FORMULAIRE CREER COMPTE CLIENT  PAR AJAX
+  
+   $('button#submit_ccompte').on ('click',function(event) {
       
+      event.preventDefault();// ou return false à la fin
+      var nom_cc = $('input#nom_cc').val();
+      var pren_cc = $('input#pren_cc').val();
+      var adresse_cc = $('input#adresse_cc').val();
+      var ville_cc = $('input#ville_cc').val();
+      var cp_cc = $('input#cp_cc').val();
+      var pays_cc = $('input#pays_cc').val();
+      var num_cc = $('input#num_cc').val();
+
+      
+      if( $.trim(nom_cc)!='' && $.trim(pren_cc)!='' && $.trim(adresse_cc)!='' && $.trim(ville_cc)!=''&& $.trim(cp_cc)!='' && $.trim(pays_cc)!='' && $.trim(num_cc)!='') {
+          var data_form=$('form#form_ccompte').serialize();
+          //alert(data_form);
+          $.ajax({               
+            type : 'GET',            
+            data : data_form,
+            dataType : "json",//type du retour des données par le php
+            url : '../admin/lib/php/ajax/AjaxCCompte_submit.php',
+            //callback exécuté en cas de succès uniquement :
+            success : function(data){ //data : ce qui est retourné par le fichier php 
+                //effacer les valeurs
+                $('form').find('input[type=text]').val('');
+                $('form').find('input[type=email]').val('');
+                //$('form').find('input[type=date]').val('');
+                $('input[name="type"]').prop('checked', false);
+
+                if(data.retour >= 0) {  //stricte égalité type compris (sinon valeurs peuvent être de types != et rester =
+                    
+                    $('section#resultat').html("Votre demande a bien été envoyée ! Votre numéro de client est :"+data.retour +" ! ");
+                }
+                else if(data.retour == -1){    
+                    
+                    $('section#resultat').html("Déjà dans la base de données...");
+                }
+                else {  
+                    
+                    $('section#resultat').html("Echec.");
+                }
+               // $('form#form_reservation').reset(); // ne fonctionne pas
+            },
+          //callback en cas d'échec
+            fail : function() {
+                document.write("Planté");
+              alert("échec url");           
+          }
+        })//fin $.ajax    
+      } //fin if
+      //si champs manquants
+      else {
+         
+          $('section#resultat').html("Remplissez tous les champs !"); 
+          
+      }
+      
+    });    
+     
+  
 });
