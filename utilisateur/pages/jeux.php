@@ -23,7 +23,7 @@
                         <div id="error"></div>
                 </td>
             </tr>
-            <tr><td weight="100px">Image</td><td>&nbsp;</td><td>Titre</td><td>&nbsp;</td><td>Prix</td><td>&nbsp;</td><td>Nbre joueurs</td><td>&nbsp;</td><td>Genre</td><td>&nbsp;</td><td>Developpeurs</td><td>&nbsp;</td><td>Plateforme</td><td>&nbsp;</td><td>Commander</td></tr>
+            <tr><td >Image</td><td>Titre</td><td>&nbsp;</td><td>Prix</td><td>&nbsp;</td><td>Nbre joueurs</td><td>&nbsp;</td><td>Genre</td><td>&nbsp;</td><td>Developpeurs</td><td>&nbsp;</td><td>Plateforme</td><td>&nbsp;</td><td>Commander</td></tr>
 <?php
     for($i=0;$i<count($cat);$i++)
     {
@@ -39,16 +39,15 @@
         $nom="achat";
         $id="cc";
         $ty="radio";
-        print "<tr height='50px' ><td colspan='2'><img  id='check-img' src='{$image}' alt='{$titre}' /></td><td>{$titre}</td><td>&nbsp;</td><td>{$prix}</td><td>&nbsp;</td><td>{$nj}</td><td>&nbsp;</td><td>{$cat2}</td><td>&nbsp;</td><td>{$dev}</td><td>&nbsp;</td><td>{$pl}</td><td>&nbsp;</td><td><input type={$ty} name={$nom} id={$id} value={$idj}/></td></tr>";
+        print "<tr><td><img  id='check-img' src='{$image}' alt='{$titre}' /></td><td>{$titre}</td><td>&nbsp;</td><td>{$prix}</td><td>&nbsp;</td><td>{$nj}</td><td>&nbsp;</td><td>{$cat2}</td><td>&nbsp;</td><td>{$dev}</td><td>&nbsp;</td><td>{$pl}</td><td>&nbsp;</td><td><input type={$ty} name={$nom} id={$id} value={$idj}/></td></tr>";
     }
 ?>
 
 </table>
     <div class="text-center center-block">
         
-        <input type="submit" name="submitcatalogue" class="btn btn-default btn-success" id="submitcatalogue" value="Acheter"/>                    
-<input type="submit" name="submitcatalogue" id="submitcatalogue" value="Acheter"/>
-<a href="index.php?page=printcat"><span class="glyphicon glyphicon-file">PDF</span></a>
+<input type="submit" name="submitcatalogue" class="btn btn-default btn-success" id="submitcatalogue" value="Acheter"/>                    
+<a class="btn btn-default " href="index.php?page=catalogue"> <img src="../admin/images/pdf.png" alt="PDF"/>Telecharger le catalogue</a>
     </div>
     
 </form>
