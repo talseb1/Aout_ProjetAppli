@@ -11,7 +11,7 @@ class catManager extends cat {
         try
         {
             
-	    $query="SELECT * FROM jeuxcat";
+	    $query="SELECT * FROM jeuxcat order by titre";
             //select * from jeu where avec categorie...
             $resultset = $this->_db->prepare($query);
             $resultset->execute();
