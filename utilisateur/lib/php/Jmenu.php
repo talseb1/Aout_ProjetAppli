@@ -24,15 +24,8 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="index.php?page=addcompte">S'enregistrer</a></li>
                                                        
-                            <li>
-                                <form class="navbar-form" role="search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Recherche" name="q" maxlength="10">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                        </div>
-                                    </div>
-                                </form
+                            <li class="btn-default">
+                                <a href="index.php?page=recherche">Rechercher <i class="glyphicon glyphicon-search"></i></a>     
                             </li>
                         </ul>
                     </div>
@@ -40,18 +33,3 @@
             </nav>
 
         </div>
-
-<?php
-if (isset($_POST['submit_login'])) {
-    $mg = new SeConnecter($db);
-    $retour = $mg->estAdmin($_POST['login'], $_POST['password']);
-    if ($retour == 1) {
-        $_SESSION['admin'] = 1;
-        $message = "Authentifié!";
-        header('Location: http://localhost/ProjetWebFinal2/admin/index.php');
-    } else {
-        $message = $retour;
-        $message = "Données non connues de notre systeme. Pour nous contacter passé par le formulaire contact en cliquant sur 'Annuler'";
-    }
-}
-?>
