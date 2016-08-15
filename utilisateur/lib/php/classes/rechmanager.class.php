@@ -11,7 +11,7 @@ class catManager extends cat {
     public function getjeuxt($titre) {
         try
         {
-            $query="SELECT * FROM jeuxcat where titre={$titre} order by (titre and cat)";
+            $query="SELECT * FROM jeuxcat where titre={$titre}";
             //select * from jeu where avec categorie...
             $resultset = $this->_db->prepare($query);
             $resultset->execute();
