@@ -39,7 +39,8 @@ foreach (glob('../admin/lib/css/bootstrap/js/*.js') as $js) {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./lib/js/fonctionsJqueryAdmin.js"></script> 
+        <script type="text/javascript" src="../admin/lib/js/fonctionsJqueryAdmin.js"></script> 
+        <script type="text/javascript" src="../admin/lib/js/fonctionsJquery.js"></script> 
     </head>
 
 
