@@ -25,7 +25,7 @@ $(document).ready(function () {
                     }
                     else
                     {
-                       $('#message').html("Identifiants incorrectes !");
+                         $('#message').html("Identifiants incorrectes !");
                     }
                 },
                 error: function ()
