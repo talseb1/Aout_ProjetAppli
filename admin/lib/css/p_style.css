@@ -2,3 +2,19 @@ body{
 
     background-image: url(./../../images/darkwood-background.jpg);
 }
+#global {
+    overflow:auto;
+}
+#gauche {
+    float:left;
+    width:60%;
+}
+#droit {
+    overflow:auto;
+    
+}
+
+#check-img{
+    width: 50%;
+    height: 50%;
+}
